@@ -4,14 +4,14 @@
 }
 
 .nav__link {
-  color: white;
+  color: #4a876c;
   text-decoration: none;
   text-transform: uppercase;
   transition: 0.15s all;
 }
 
 .nav__link:visited {
-  color: white;
+  color: #8d6094;
 }
 
 .nav__link:hover {
@@ -19,5 +19,5 @@
 }
 
 .nav__link:active {
-  color: rgb(153, 153, 153);
+  color: #b7cfc4;
 }

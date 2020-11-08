@@ -1,9 +1,9 @@
-.movie {
+.book {
   padding: 1rem;
   width: 300px;
   min-height: 125px;
   background-color: #fff;
-  color: #2a2dd1;
+  color: #4a874a;
   border-radius: 10px;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -11,47 +11,47 @@
   justify-content: space-between;
 }
 
-.movie__button {
+.book__button {
   padding: 0.25rem;
   border-radius: 50%;
   border: none;
   background-color: transparent;
-  color: #151116;
+  color: #a480a9;
   transition: all 0.15s;
   outline: none;
 }
 
-.movie_button:disabled {
+.book_button:disabled {
   opacity: 0.6;
 }
 
-.movie__button:focus {
+.book__button:focus {
   color: white;
   background-color: #151116;
 }
 
-.movie__button:hover {
+.book__button:hover {
   color: white;
   background-color: #151116;
 }
 
-.movie__button:active {
+.book__button:active {
   color: white;
   background-color: #151116;
 }
 
-.movie__button svg {
+.book__button svg {
   font-size: 1.25rem;
 }
 
-.movie > * {
+.book > * {
   margin-bottom: 0.25rem;
 }
 
-.movie__title {
+.book__title {
   font-weight: bold;
 }
 
-.movie__year {
+.book__year {
   font-style: italic;
 }

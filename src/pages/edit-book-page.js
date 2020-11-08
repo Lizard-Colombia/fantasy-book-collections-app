@@ -1,16 +1,16 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import EditMovie from "../components/edit-movie";
+import EditBook from "../components/edit-book";
 
-function EditMoviePage() {
+function EditBookPage() {
   return (
     <main>
       <Helmet>
         <title>Edit</title>
       </Helmet>
-      <EditMovie />
+      <EditBook />
     </main>
   );
 }
 
-export default EditMoviePage;
+export default EditBookPage;

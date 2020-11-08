@@ -1,11 +1,11 @@
-.movies-container {
+.books-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.movie-list {
+.book-list {
   display: inline-grid;
   gap: 1rem;
   grid-template-columns: 1fr 1fr;

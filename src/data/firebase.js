@@ -15,7 +15,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const db = firebase.firestore();
-const moviesCollection = db.collection("booksCollection");
+const booksCollection = db.collection("booksCollection");
 
 export default db;
-export { moviesCollection };
+export { booksCollection };

@@ -1,19 +1,19 @@
 import React, { useState } from "react";
-import "./edit-movie.css";
+import "./edit-book.css";
 import ErrorMessage from "./error-message";
 import LoadingSpinner from "./loading-spinner";
-import MovieForm from "./movie-form";
+import BookForm from "./book-form";
 
-function EditMovie(props) {
+function EditBook(props) {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [movieData, setMovieData] = useState(null);
+  const [bookData, setBookData] = useState(null);
 
   const onMovieSubmit = async (title, rating, releaseYear) => {};
 
   return (
     <div className="edit-container">
-      <h2>Edit Movie</h2>
+      <h2>Edit Book</h2>
       {isLoading && (
         <LoadingSpinner
           size="50px"
@@ -22,9 +22,9 @@ function EditMovie(props) {
         />
       )}
       {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-      {movieData && <MovieForm />}
+      {bookData && <BookForm />}
     </div>
   );
 }
 
-export default EditMovie;
+export default EditBook;

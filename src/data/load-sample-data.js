@@ -2,7 +2,7 @@ import db from "./firebase";
 import sampleData from "./sample-data.json";
 
 async function loadSampleData() {
-  sampleData.map(addMovie);
+  sampleData.map(addBook);
 }
 
 async function addMovie({ title, author, yearPublished, readingLevel, fanRating, series, numberInSeries }) {
@@ -19,6 +19,7 @@ async function addMovie({ title, author, yearPublished, readingLevel, fanRating,
       .where("fanRating", "==", fanRating)
       .where("series", "==", series)
       .where("numberInSeries", "==", numberInSeries)
+      .where("pages", "==", pages)
       .get();
 
     // Create a doc reference that points to where this movie is located in the DB - either a new

@@ -1,8 +1,8 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import MovieListing from "../components/movie-listing";
+import MovieListing from "../components/book-listing";
 
-function MoviesPage() {
+function BooksPage() {
   return (
     <main>
       <Helmet>
@@ -13,4 +13,4 @@ function MoviesPage() {
   );
 }
 
-export default MoviesPage;
+export default BooksPage;
