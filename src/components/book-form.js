@@ -128,8 +128,6 @@ function BookForm(props) {
           onChange={onPagesChange}
         />
 
-
-
         {/* Submit Button */}
         <input
           className="book-form__submit"
