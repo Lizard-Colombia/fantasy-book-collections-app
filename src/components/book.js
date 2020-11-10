@@ -10,7 +10,8 @@ function Book (props) {
   const { title, author, yearPublished, readingLevel, fanRating, series, numberInSeries, pages } = data;
 
   const fanRatingString = "💙 ".repeat(fanRating) + "🤍 ".repeat(5 - fanRating);
-const history = useHistory();
+
+  const history = useHistory();
   const [isDeleting, setIsDeleting] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 

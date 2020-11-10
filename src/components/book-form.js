@@ -56,8 +56,8 @@ function BookForm(props) {
 
   const onBookSumbit = async (event) => {
     event.preventDefault();
-    // onSubmit(title, author, yearPublished, readingLevel, 
-    // fanRating, series, numberInSeries, pages);
+    onSubmit(title, author, yearPublished, readingLevel, 
+    fanRating, series, numberInSeries, pages);
   };
 
   return (

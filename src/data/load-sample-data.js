@@ -5,9 +5,9 @@ async function loadSampleData() {
   sampleData.map(addBook);
 }
 
-async function addMovie({ title, author, yearPublished, readingLevel, fanRating, series, numberInSeries }) {
+async function addBook({ title, author, yearPublished, readingLevel, fanRating, series, numberInSeries, pages }) {
   try {
-    const data = { title, author, yearPublished, readingLevel, fanRating, series, numberInSeries };
+    const data = { title, author, yearPublished, readingLevel, fanRating, series, numberInSeries, pages  };
 
     // Look up a movie matching the title and release year.
     const snapshot = await db

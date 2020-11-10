@@ -4,7 +4,7 @@ import ErrorMessage from "./error-message";
 import { booksCollection } from "../data/firebase";
 import  Book from "./book";
 import "./book-listing.css";
-import db from "../data/firebase";
+
 
 // useEffect Hook:
 // > Guide, https://reactjs.org/docs/hooks-effect.html

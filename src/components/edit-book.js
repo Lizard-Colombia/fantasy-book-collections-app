@@ -21,7 +21,7 @@ const { id } = props;
         const bookSnapshot = await booksCollection.doc(id).get();
 
         if (!bookSnapshot.exists) {
-          throw new Error("No such movie exists!");
+          throw new Error("No such book exists!");
         }
 
         const data = bookSnapshot.data();
@@ -36,7 +36,14 @@ const { id } = props;
     getBook(); 
   }, [id]);
 
-  const onBookSubmit = async (title, author, yearPublished, readingLevel, fanRating, series, numberInSeries, pages) => {
+  const onBookSubmit = async (title, 
+    author, 
+    yearPublished, 
+    readingLevel, 
+    fanRating, 
+    series, 
+    numberInSeries, 
+    pages) => {
     setIsSaving(true);
     setFormMessage("");
 
