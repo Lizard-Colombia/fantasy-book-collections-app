@@ -1,6 +1,6 @@
 .book {
   padding: 1rem;
-  width: 300px;
+  width: 400px;
   min-height: 125px;
   background-color: #fff;
   color: #4a874a;
@@ -22,7 +22,7 @@
 }
 
 .book_button:disabled {
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 .book__button:focus {
@@ -41,7 +41,7 @@
 }
 
 .book__button svg {
-  font-size: 1.25rem;
+  font-size: 1.35rem;
 }
 
 .book > * {
