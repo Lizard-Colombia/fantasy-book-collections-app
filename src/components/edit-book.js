@@ -1,15 +1,65 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { booksCollection } from "../data/firebase";
 import "./edit-book.css";
 import ErrorMessage from "./error-message";
 import LoadingSpinner from "./loading-spinner";
 import BookForm from "./book-form";
 
 function EditBook(props) {
+const { id } = props;
+
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [bookData, setBookData] = useState(null);
+  const [isSaving, setIsSaving] = useState(false);
+  const [formMessage, setFormMessage] = useState(null);
 
-  const onMovieSubmit = async (title, rating, releaseYear) => {};
+  useEffect(() => {
+    async function getBook() {
+      setIsLoading(true);
+      try {
+        const bookSnapshot = await booksCollection.doc(id).get();
+
+        if (!bookSnapshot.exists) {
+          throw new Error("No such movie exists!");
+        }
+
+        const data = bookSnapshot.data();
+        setBookData(data);
+      } catch (error) {
+        setErrorMessage("Something went wrong. Please try again");
+        console.error(error);
+      }
+      setIsLoading(false);
+    }
+
+    getBook(); 
+  }, [id]);
+
+  const onBookSubmit = async (title, author, yearPublished, readingLevel, fanRating, series, numberInSeries, pages) => {
+    setIsSaving(true);
+    setFormMessage("");
+
+    try {
+      await booksCollection.doc(id).set({
+        title,
+        author,
+        yearPublished,
+        readingLevel,
+        fanRating,
+        series,
+        numberInSeries,
+        pages,
+      });
+      setFormMessage("Saved successfully!");
+
+    }catch (error) {
+      setFormMessage("Something went wrong editing this movie. Please try again.");
+      console.error(error);
+    }
+
+    setIsSaving(false);
+  };
 
   return (
     <div className="edit-container">
@@ -21,10 +71,16 @@ function EditBook(props) {
           backgroundColor="rgb(255, 255, 255, 0.2)"
         />
       )}
-      {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-      {bookData && <BookForm />}
-    </div>
-  );
+      {errorMessage && <ErrorMessage displayAsCard>{errorMessage}</ErrorMessage>}
+      {bookData && (
+        <BookForm
+        initialState={bookData}
+        onSubmit={onBookSubmit}
+        isSaving={isSaving}
+        message={formMessage}
+        />
+      )}
+      </div>);
 }
 
 export default EditBook;

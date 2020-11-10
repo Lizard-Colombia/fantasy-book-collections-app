@@ -29,7 +29,7 @@ function BookListing() {
       console.error(error);
     };
 
-    const unsubscribe = booksCollection.onSnapshot(onNext, onError);
+    const unsubscribe = booksCollection.orderBy("author", "desc").onSnapshot(onNext, onError);
     return unsubscribe;
   }, []);
 
