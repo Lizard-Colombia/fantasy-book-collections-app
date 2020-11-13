@@ -41,7 +41,7 @@ const { id } = props;
     yearPublished, 
     readingLevel, 
     fanRating, 
-     
+    series,
     numberInSeries, 
     pages) => {
     setIsSaving(true);
@@ -54,7 +54,7 @@ const { id } = props;
         yearPublished,
         readingLevel,
         fanRating,
-      
+      series,
         numberInSeries,
         pages,
       });

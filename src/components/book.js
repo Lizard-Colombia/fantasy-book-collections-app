@@ -7,7 +7,7 @@ import "./book.css";
 
 function Book (props) {
   const { id, data } = props;
-  const { title, author, yearPublished, readingLevel, fanRating,  numberInSeries, pages } = data;
+  const { title, author, yearPublished, readingLevel, fanRating, series, numberInSeries, pages } = data;
 
   const fanRatingString = "💙 ".repeat(fanRating) + "🤍 ".repeat(5 - fanRating);
 
@@ -28,6 +28,7 @@ function Book (props) {
     setIsDeleting(false);
   };
 
+
   return (
     <div className="book">
       <div className="book__contents">
@@ -36,6 +37,7 @@ function Book (props) {
         <div className="book__viewed"> Year: {yearPublished} </div>
         <div className="book__viewed"> Reading Level: {readingLevel} </div>
         <div className="book__rating">Fan Rating: {fanRatingString}</div>
+        <div className="book__rating">Series: {series === true ? "Yes":"No"}</div>
                 <div className="book__viewed">Book Number in Series: {numberInSeries}</div>
         <div className="book__viewed">Total Pages:  {pages}</div>
         {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}

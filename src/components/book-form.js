@@ -21,7 +21,7 @@ function BookForm(props) {
 
   const [readingLevel, setReadingLevel] = useState(initialState.readingLevel);
   const [fanRating, setFanRating] = useState(initialState.fanRating);
-
+  const [series, setSeries] = useState(initialState.Series);
   const [numberInSeries, setNumberInSeries] = useState(initialState.numberInSeries);
   const [pages, setPages] = useState(initialState.pages);
   const [errorMessage, setErrorMessage] = useState("");
@@ -44,6 +44,10 @@ function BookForm(props) {
     setFanRating(event.target.value);
   };
 
+  const onSeriesChange = (event) => {
+    setSeries(event.target.checked);
+  };
+
   const onNumberInSeriesChange = (event) => {
     setNumberInSeries(event.target.value);
   };
@@ -53,9 +57,15 @@ function BookForm(props) {
   };
 
   const onBookSumbit = async (event) => {
+    if (title === ""){
+      setErrorMessage("You must provide a title.");
+      return;
+    }
     event.preventDefault();
-    onSubmit(title, author, yearPublished, readingLevel, 
-    fanRating, numberInSeries, pages);
+    const yearPublishedInteger = Number.parseInt(yearPublished, 10);
+  
+    onSubmit(title, author, yearPublishedInteger, readingLevel, 
+    fanRating, series, numberInSeries, pages);
   };
 
   return (
@@ -98,6 +108,14 @@ function BookForm(props) {
           type="number"
           value={fanRating}
           onChange={onFanRatingChange}
+        />
+{/* Series */}
+<label className="book-form__label">Series:</label>
+        <input
+          className="book-form__input"
+          type="checkbox"
+          checked={series}
+          onChange={onSeriesChange}
         />
 
 

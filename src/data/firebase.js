@@ -19,3 +19,4 @@ const booksCollection = db.collection("booksCollection");
 
 export default db;
 export { booksCollection };
+export { db, firebase };
