@@ -21,7 +21,7 @@ function BookForm(props) {
 
   const [readingLevel, setReadingLevel] = useState(initialState.readingLevel);
   const [fanRating, setFanRating] = useState(initialState.fanRating);
-  const [series, setSeries] = useState(initialState.series);
+
   const [numberInSeries, setNumberInSeries] = useState(initialState.numberInSeries);
   const [pages, setPages] = useState(initialState.pages);
   const [errorMessage, setErrorMessage] = useState("");
@@ -43,9 +43,7 @@ function BookForm(props) {
   const onFanRatingChange = (event) => {
     setFanRating(event.target.value);
   };
-  const onSeriesChange = (event) => {
-    setSeries(event.target.value);
-  };
+
   const onNumberInSeriesChange = (event) => {
     setNumberInSeries(event.target.value);
   };
@@ -57,12 +55,13 @@ function BookForm(props) {
   const onBookSumbit = async (event) => {
     event.preventDefault();
     onSubmit(title, author, yearPublished, readingLevel, 
-    fanRating, series, numberInSeries, pages);
+    fanRating, numberInSeries, pages);
   };
 
   return (
     <form className="book-form" onSubmit={onBookSumbit}>
-      <h2 className="book-form__title">Book Details</h2>
+      <h2 className="book-form__title">Fantasy Book Details</h2>
+      <h3 className="book-form__subtitle">Add details to the form below <br/> then click the save button below. </h3>
       {message && <p className="book-form__message">{message}</p>}
       {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
       <fieldset className="book-form__controls" disabled={isSaving}>
@@ -101,14 +100,6 @@ function BookForm(props) {
           onChange={onFanRatingChange}
         />
 
-{/* Series */}
-<label className="book-form__label">Part of a series:</label>
-        <input
-          className="book-form__input"
-          type="boolean"
-          value={series}
-          onChange={onSeriesChange}
-        />
 
 {/* Number In Series */}
 <label className="book-form__label">Number in the series:</label>
@@ -132,7 +123,7 @@ function BookForm(props) {
         <input
           className="book-form__submit"
           type="submit"
-          value={isSaving ? "Saving..." : "Save"}
+          value={isSaving ? "Saving..." : "Save Book"}
         />
       </fieldset>
     </form>

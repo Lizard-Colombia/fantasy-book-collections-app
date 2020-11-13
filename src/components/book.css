@@ -1,4 +1,7 @@
 .book {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva,
+    Verdana, sans-serif;
+  line-height: 1.75em;
   padding: 1rem;
   width: 400px;
   min-height: 125px;
@@ -50,6 +53,8 @@
 
 .book__title {
   font-weight: bold;
+  font-size: 18px;
+  color: #244424;
 }
 
 .book__year {

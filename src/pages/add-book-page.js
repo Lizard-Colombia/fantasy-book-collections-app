@@ -6,7 +6,7 @@ function AddBookPage() {
   return (
     <main>
       <Helmet>
-        <title>Add</title>
+        <title>Add Book</title>
       </Helmet>
       <AddBook />
     </main>

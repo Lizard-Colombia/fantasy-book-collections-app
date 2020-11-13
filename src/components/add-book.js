@@ -7,7 +7,7 @@ function AddBook() {
   const [isSaving, setIsSaving] = useState(false);
   const [formMessage, setFormMessage] = useState("");
 
-  const onBookSumbit = async (title, author, yearPublished, readingLevel, fanRating, series, numberInSeries, pages ) => {
+  const onBookSumbit = async (title, author, yearPublished, readingLevel, fanRating, numberInSeries, pages ) => {
     setIsSaving(true);
     setFormMessage("");
 
@@ -18,7 +18,7 @@ function AddBook() {
         yearPublished,
         readingLevel,
         fanRating,
-        series,
+      
         numberInSeries,
         pages,
       });

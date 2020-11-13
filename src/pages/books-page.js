@@ -6,7 +6,7 @@ function BooksPage() {
   return (
     <main>
       <Helmet>
-        <title>Books</title>
+        <title>Book Collection</title>
       </Helmet>
       <MovieListing />
     </main>

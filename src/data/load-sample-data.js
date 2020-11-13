@@ -5,9 +5,9 @@ async function loadSampleData() {
   sampleData.map(addBook);
 }
 
-async function addBook({ title, author, yearPublished, readingLevel, fanRating, series, numberInSeries, pages }) {
+async function addBook({ title, author, yearPublished, readingLevel, fanRating,  numberInSeries, pages }) {
   try {
-    const data = { title, author, yearPublished, readingLevel, fanRating, series, numberInSeries, pages  };
+    const data = { title, author, yearPublished, readingLevel, fanRating,  numberInSeries, pages  };
 
     // Look up a movie matching the title and release year.
     const snapshot = await db
@@ -17,7 +17,6 @@ async function addBook({ title, author, yearPublished, readingLevel, fanRating, 
       .where("yearPublished", "==", yearPublished)
       .where("readingLevel", "==", readingLevel)
       .where("fanRating", "==", fanRating)
-      .where("series", "==", series)
       .where("numberInSeries", "==", numberInSeries)
       .where("pages", "==", pages)
       .get();

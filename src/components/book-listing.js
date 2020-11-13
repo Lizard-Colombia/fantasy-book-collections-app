@@ -33,21 +33,9 @@ function BookListing() {
     return unsubscribe;
   }, []);
 
-  // db.collection("booksCollection")
-  //   .orderBy("title")
-  //   .limit(6)
-  //   .get()
-  //   .then(function (querySnapshot) {
-  //     querySnapshot.forEach(function (doc) {
-  //       // return doc.rating, " => ", doc.data();
-  //       //you can either output to a console or to the App but not to both
-  //       console.log(doc.rating, " => ", doc.data());
-  //     });
-  //   });
-
   return (
     <div className="books-container">
-      <h1> Books</h1>
+      <h1> My Fantasy Book Collection</h1>
       {isLoading && (
         <LoadingSpinner
           size="50px"
