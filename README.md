@@ -17,4 +17,4 @@
  * Edit multiple books at once
  * Create categories and diplay them
  
- ![](/images/screenshot.png)
+ ![](src/images/screenshot.png)
