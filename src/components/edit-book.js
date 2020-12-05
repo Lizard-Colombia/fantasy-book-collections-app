@@ -1,71 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { booksCollection } from "../data/firebase";
+import React from "react";
+import useBook from "../hooks/use-book";
+import useSaveBook from "../hooks/use-save-book";
 import "./edit-book.css";
 import ErrorMessage from "./error-message";
 import LoadingSpinner from "./loading-spinner";
 import BookForm from "./book-form";
 
 function EditBook(props) {
-const { id } = props;
+  const bookId = props.id;
+  const userId = props.user.uid;
 
-  const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [bookData, setBookData] = useState(null);
-  const [isSaving, setIsSaving] = useState(false);
-  const [formMessage, setFormMessage] = useState(null);
+  const [bookData, isLoading, errorMessage] = useBook(userId, bookId);
+  const [saveBook, isSaving, formMessage] = useSaveBook();
 
-  useEffect(() => {
-    async function getBook() {
-      setIsLoading(true);
-      try {
-        const bookSnapshot = await booksCollection.doc(id).get();
-
-        if (!bookSnapshot.exists) {
-          throw new Error("No such book exists!");
-        }
-
-        const data = bookSnapshot.data();
-        setBookData(data);
-      } catch (error) {
-        setErrorMessage("Something went wrong. Please try again");
-        console.error(error);
-      }
-      setIsLoading(false);
-    }
-
-    getBook(); 
-  }, [id]);
-
-  const onBookSubmit = async (title, 
-    author, 
-    yearPublished, 
-    readingLevel, 
-    fanRating, 
-    series,
-    numberInSeries, 
-    pages) => {
-    setIsSaving(true);
-    setFormMessage("");
-
-    try {
-      await booksCollection.doc(id).set({
-        title,
-        author,
-        yearPublished,
-        readingLevel,
-        fanRating,
-      series,
-        numberInSeries,
-        pages,
-      });
-      setFormMessage("Saved successfully!");
-
-    }catch (error) {
-      setFormMessage("Something went wrong editing this movie. Please try again.");
-      console.error(error);
-    }
-
-    setIsSaving(false);
+  const onBookSubmit = async (title, rating, releaseYear) => {
+    saveBook({ title, rating, releaseYear }, userId, bookId);
   };
 
   return (
@@ -81,13 +30,99 @@ const { id } = props;
       {errorMessage && <ErrorMessage displayAsCard>{errorMessage}</ErrorMessage>}
       {bookData && (
         <BookForm
-        initialState={bookData}
-        onSubmit={onBookSubmit}
-        isSaving={isSaving}
-        message={formMessage}
+          initialState={bookData}
+          onSubmit={onBookSubmit}
+          isSaving={isSaving}
+          message={formMessage}
         />
       )}
-      </div>);
+    </div>
+  );
 }
 
 export default EditBook;
+
+
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [errorMessage, setErrorMessage] = useState("");
+  // const [bookData, setBookData] = useState(null);
+  // const [isSaving, setIsSaving] = useState(false);
+  // const [formMessage, setFormMessage] = useState(null);
+
+  // useEffect(() => {
+  //   async function getBook() {
+  //     setIsLoading(true);
+  //     try {
+  //       const bookSnapshot = await booksCollection.doc(id).get();
+
+  //       if (!bookSnapshot.exists) {
+  //         throw new Error("No such book exists!");
+  //       }
+
+  //       const data = bookSnapshot.data();
+  //       setBookData(data);
+  //     } catch (error) {
+  //       setErrorMessage("Something went wrong. Please try again");
+  //       console.error(error);
+  //     }
+  //     setIsLoading(false);
+  //   }
+
+  //   getBook(); 
+  // }, [id]);
+
+  // const onBookSubmit = async (title, 
+  //   author, 
+  //   yearPublished, 
+  //   readingLevel, 
+  //   fanRating, 
+  //   series,
+  //   numberInSeries, 
+  //   pages) => {
+  //   setIsSaving(true);
+  //   setFormMessage("");
+
+  //   try {
+  //     await booksCollection.doc(id).set({
+  //       title,
+  //       author,
+  //       yearPublished,
+  //       readingLevel,
+  //       fanRating,
+  //     series,
+  //       numberInSeries,
+  //       pages,
+  //     });
+  //     setFormMessage("Saved successfully!");
+
+  //   }catch (error) {
+  //     setFormMessage("Something went wrong editing this book. Please try again.");
+  //     console.error(error);
+  //   }
+
+  // //   setIsSaving(false);
+  // // };
+
+  // return (
+  //   <div className="edit-container">
+  //     <h2>Edit Book</h2>
+  //     {isLoading && (
+  //       <LoadingSpinner
+  //         size="50px"
+  //         spinnerColor="white"
+  //         backgroundColor="rgb(255, 255, 255, 0.2)"
+  //       />
+  //     )}
+  //     {errorMessage && <ErrorMessage displayAsCard>{errorMessage}</ErrorMessage>}
+  //     {bookData && (
+  //       <BookForm
+  //       initialState={bookData}
+  //       onSubmit={onBookSubmit}
+  //       isSaving={isSaving}
+  //       message={formMessage}
+  //       />
+  //     )}
+  //     </div>);
+// }
+
+// export default EditBook;
