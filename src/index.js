@@ -10,4 +10,4 @@ ReactDOM.render(<App />, document.getElementById("root"));
 // loadSampleData();
 
 
-console.log(process.env);
+// console.log(process.env);

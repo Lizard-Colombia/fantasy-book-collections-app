@@ -2,14 +2,16 @@ import React, { useState } from "react";
 import { Delete, Edit } from "@material-ui/icons";
 import {useHistory } from "react-router-dom";
 import ErrorMessage from "./error-message";
-import { booksCollection } from "../data/firebase";
+
+import { usersCollection } from "../data/firebase";
 import "./book.css";
 
 function Book (props) {
-  const { id, data } = props;
+  const { id, data, userId } = props;
   const { title, author, yearPublished, readingLevel, fanRating, series, numberInSeries, pages } = data;
 
-  const fanRatingString = "💙 ".repeat(fanRating) + "🤍 ".repeat(5 - fanRating);
+  const fanRatingString = "⚜️ ".repeat(fanRating);
+  // const fanRatingString = "⚜️ ".repeat(fanRating) + "🤍 ".repeat(5 - fanRating);
 
   const history = useHistory();
   const [isDeleting, setIsDeleting] = useState(false);
@@ -19,13 +21,13 @@ function Book (props) {
     setIsDeleting(true);
     setErrorMessage("");
     try {
-      const docRef =booksCollection.doc(id);
+      const docRef = usersCollection.doc(userId).collection("books").doc(id);
       await docRef.delete();
     } catch (error) {
       console.error(error);
       setErrorMessage("Something went wrong while deleting. Please try again.");
+      setIsDeleting(false);
     }
-    setIsDeleting(false);
   };
 
 
