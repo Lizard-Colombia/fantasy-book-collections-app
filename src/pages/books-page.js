@@ -1,6 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import MovieListing from "../components/book-listing";
+import BookListing from "../components/book-listing";
 
 function BooksPage() {
   return (
@@ -8,7 +8,7 @@ function BooksPage() {
       <Helmet>
         <title>Book Collection</title>
       </Helmet>
-      <MovieListing />
+      <BookListing />
     </main>
   );
 }

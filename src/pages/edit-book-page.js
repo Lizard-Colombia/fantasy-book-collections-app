@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 import EditBook from "../components/edit-book";
 
-function EditBookPage() {
+function EditBookPage(props) {
   const { id } = useParams();
 
   return (
@@ -11,7 +11,7 @@ function EditBookPage() {
       <Helmet>
         <title>Edit</title>
       </Helmet>
-      <EditBook id={id} />
+      <EditBook id={id} {...props}/>
     </main>
   );
 }

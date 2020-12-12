@@ -8,10 +8,9 @@ import "./book.css";
 
 function Book (props) {
   const { id, data, userId } = props;
-  const { title, author, yearPublished, readingLevel, fanRating, series, numberInSeries, pages } = data;
+  const { author, numberInSeries, pages, readingLevel, review, series, title, yearPublished } = data;
 
-  const fanRatingString = "⚜️ ".repeat(fanRating);
-  // const fanRatingString = "⚜️ ".repeat(fanRating) + "🤍 ".repeat(5 - fanRating);
+  // const fanRatingString = "💜".repeat(rating) + "🤍".repeat(5 - rating);
 
   const history = useHistory();
   const [isDeleting, setIsDeleting] = useState(false);
@@ -38,10 +37,11 @@ function Book (props) {
         <div className="book__viewed"> Author: {author} </div>
         <div className="book__viewed"> Year: {yearPublished} </div>
         <div className="book__viewed"> Reading Level: {readingLevel} </div>
-        <div className="book__rating">Fan Rating: {fanRatingString}</div>
+        {/* <div className="book__rating">Fan Rating: {fanRating}</div> */}
         <div className="book__rating">Series: {series === true ? "Yes":"No"}</div>
                 <div className="book__viewed">Book Number in Series: {numberInSeries}</div>
         <div className="book__viewed">Total Pages:  {pages}</div>
+        <div className="book__viewed">Review: {review}</div>
         {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
       </div>
       <div>

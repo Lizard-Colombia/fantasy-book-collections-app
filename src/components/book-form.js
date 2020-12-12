@@ -13,6 +13,7 @@ function BookForm(props) {
   if (initialState.series === undefined) initialState.series = true;
   if (initialState.numberInSeries === undefined) initialState.numberInSeries = 1;
   if (initialState.pages === undefined) initialState.pages = 0;
+  if (initialState.review === undefined) initialState.review = "Not yet reviewed.";
   
 
   const [title, setTitle] = useState(initialState.title);
@@ -25,6 +26,7 @@ function BookForm(props) {
   const [numberInSeries, setNumberInSeries] = useState(initialState.numberInSeries);
   const [pages, setPages] = useState(initialState.pages);
   const [errorMessage, setErrorMessage] = useState("");
+  const [review, setReview] = useState(initialState.review);
 
   const onTitleChange = (event) => {
     setTitle(event.target.value);
@@ -56,6 +58,10 @@ function BookForm(props) {
     setPages(event.target.value);
   };
 
+  const onReviewChange = (event) => {
+    setReview(event.target.value);
+  };
+
   const onBookSumbit = async (event) => {
     if (title === ""){
       setErrorMessage("You must provide a title.");
@@ -65,7 +71,7 @@ function BookForm(props) {
     const yearPublishedInteger = Number.parseInt(yearPublished, 10);
   
     onSubmit(title, author, yearPublishedInteger, readingLevel, 
-    fanRating, series, numberInSeries, pages);
+    fanRating, series, numberInSeries, pages, review);
   };
 
   return (
@@ -135,6 +141,15 @@ function BookForm(props) {
           type="number"
           value={pages}
           onChange={onPagesChange}
+        />
+
+        {/* Review */}
+        <label className="book-form__label">Review:</label>
+        <input
+          className="book-form__input"
+          type="text"
+          value={review}
+          onChange={onReviewChange}
         />
 
         {/* Submit Button */}

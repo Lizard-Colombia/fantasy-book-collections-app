@@ -10,11 +10,11 @@ function Nav(props) {
       </Link>{" "}
       |{" "}
       <Link className="nav__link" to="/">
-        All Movies
+        All Books 
       </Link>{" "}
       |{" "}
       <Link className="nav__link" to="/add">
-        Add Movie
+        Add Book
       </Link>
     </nav>
   );

@@ -5,11 +5,11 @@ async function loadSampleData() {
   sampleData.map(addBook);
 }
 
-async function addBook({ title, author, yearPublished, readingLevel, fanRating,  series, numberInSeries, pages }) {
+async function addBook({ title, author, yearPublished, readingLevel, fanRating,  series, numberInSeries, pages, review }) {
   try {
-    const data = { title, author, yearPublished, readingLevel, fanRating, series, numberInSeries, pages  };
+    const data = { title, author, yearPublished, readingLevel, fanRating, series, numberInSeries, pages, review  };
 
-    // Look up a movie matching the title and release year.
+    // Look up a book matching the title and release year.
     const snapshot = await db
       .collection("booksCollection")
       .where("title", "==", title)
@@ -20,9 +20,10 @@ async function addBook({ title, author, yearPublished, readingLevel, fanRating, 
       .where("series", "==", series)
       .where("numberInSeries", "==", numberInSeries)
       .where("pages", "==", pages)
+      .where("review", "==", review)
       .get();
 
-    // Create a doc reference that points to where this movie is located in the DB - either a new
+    // Create a doc reference that points to where this book is located in the DB - either a new
     // doc if it is not there, or the existing doc.
     let docRef;
     if (snapshot.empty) {
