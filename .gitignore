@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
@@ -26,6 +27,9 @@ yarn-debug.log*
 yarn-error.log*
 
 .vercel
+=======
+node_modules
+>>>>>>> parent of 8802f58f... OMG IT WORKS!!!
 =======
 node_modules
 >>>>>>> parent of 8802f58f... OMG IT WORKS!!!
